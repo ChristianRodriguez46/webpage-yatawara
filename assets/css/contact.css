@@ -1,0 +1,68 @@
+.form {
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 1.25rem;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.form .row {
+    display: grid;
+    gap: .8rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.form .row.full {
+    grid-template-columns: 1fr;
+}
+
+.form label {
+    font-weight: 600;
+    color: var(--brand);
+}
+
+.form input,
+.form textarea {
+    width: 100%;
+    border: 1px solid #D6E7E1;
+    border-radius: 10px;
+    padding: .75rem .9rem;
+    font: inherit;
+    background: #fff;
+}
+
+.form textarea {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.form .actions {
+    display: flex;
+    gap: .6rem;
+    align-items: center;
+}
+
+.alert {
+    border-radius: 12px;
+    padding: .75rem 1rem;
+}
+
+.alert.success {
+    background: #E9FBF1;
+    color: #166534;
+}
+
+.alert.error {
+    background: #FDECEC;
+    color: #7F1D1D;
+}
+
+/* honeypot hidden */
+.hp {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}

@@ -1,0 +1,25 @@
+.hero .content h1 {
+    font-size: clamp(2.2rem, 4.5vw, 3rem);
+    margin-bottom: .25rem;
+}
+
+.hero .content p {
+    margin: .25rem 0 .75rem;
+    max-width: 60ch;
+}
+
+.home-cards {
+    margin-top: -48px;
+    position: relative;
+    z-index: 3;
+}
+
+.home-card .title {
+    font-weight: 700;
+    color: var(--brand);
+    margin-bottom: .25rem;
+}
+
+.home-card p {
+    color: var(--muted);
+}

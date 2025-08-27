@@ -1,0 +1,387 @@
+/* ---- Base Reset / Elements ---- */
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: #26443B;
+    background-color: #EDFFEC;
+    line-height: 1.6;
+}
+
+/* Color tokens */
+:root {
+    --bg: #EDFFEC;
+    --text: #26443B;
+    --brand: #26443B;
+    --brand-2: #1E6F5C;
+    --accent: #008CBA;
+    --muted: #8FA59D;
+    --card: #ffffff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, .06);
+}
+
+/* Layout */
+.container {
+    width: min(1080px, 92vw);
+    margin: 0 auto;
+}
+
+.page {
+    padding-block: 24px;
+}
+
+/* Typo */
+h1,
+h2,
+h3 {
+    color: var(--brand);
+    margin: 0 0 .5rem;
+    line-height: 1.25;
+}
+
+h1 {
+    font-size: clamp(2rem, 3vw, 2.5rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+}
+
+p {
+    margin: 0 0 1rem;
+}
+
+/* Cards */
+.card {
+    background: var(--card);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    padding: 1.25rem;
+}
+
+.grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.grid.cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+    .grid.cols-3 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid.cols-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Buttons/Links */
+.button {
+    display: inline-block;
+    border-radius: 10px;
+    padding: .7rem 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    background: var(--brand-2);
+    color: #fff;
+    transition: transform .15s ease, filter .15s ease;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Header / Nav */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--brand);
+    color: #fff;
+    box-shadow: var(--shadow);
+}
+
+.nav-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem 0;
+}
+
+.brand {
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: .3px;
+    text-decoration: none;
+}
+
+.brand span {
+    color: #A0E6CF;
+}
+
+.mainnav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.mainnav a {
+    color: #fff;
+    font-weight: 600;
+    padding: .5rem .4rem;
+    display: block;
+    border-radius: 8px;
+}
+
+.mainnav li.active>a,
+.mainnav a:hover {
+    background: rgba(255, 255, 255, .12);
+    text-decoration: none;
+}
+
+/* Dropdown */
+.has-sub {
+    position: relative;
+}
+
+.has-sub .submenu {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 8px);
+    min-width: 180px;
+    background: #fff;
+    color: var(--text);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    display: none;
+    padding: .5rem;
+    z-index: 1001;
+}
+
+.has-sub:hover .submenu {
+    display: block;
+}
+
+.has-sub .submenu a {
+    color: var(--text);
+    border-radius: 8px;
+    padding: .5rem .6rem;
+}
+
+.has-sub .submenu a:hover {
+    background: rgba(0, 0, 0, .06);
+}
+
+/* Mobile nav */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: .5rem;
+}
+
+.nav-toggle .bar {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: #fff;
+    margin: 5px 0;
+    border-radius: 2px;
+}
+
+@media (max-width: 860px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .mainnav {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 60px;
+        background: var(--brand);
+        display: none;
+    }
+
+    .mainnav.open {
+        display: block;
+    }
+
+    .mainnav ul {
+        flex-direction: column;
+        padding: .5rem;
+    }
+
+    .has-sub .submenu {
+        position: static;
+        display: block;
+        background: transparent;
+        color: #fff;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .has-sub .submenu a {
+        color: #fff;
+    }
+}
+
+/* Footer */
+.site-footer {
+    background: var(--brand);
+    color: #fff;
+    padding: 2rem 0;
+    margin-top: 24px;
+}
+
+.site-footer a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Collapsibles - details/summary */
+details {
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin: .6rem 0;
+    overflow: hidden;
+}
+
+summary {
+    list-style: none;
+    cursor: pointer;
+    padding: .9rem 1rem;
+    font-weight: 700;
+    color: var(--brand);
+    position: relative;
+}
+
+summary::marker,
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::after {
+    content: '+';
+    position: absolute;
+    right: 1rem;
+    top: .9rem;
+    font-weight: 700;
+    transition: transform .2s ease;
+}
+
+details[open] summary::after {
+    content: '–';
+    transform: rotate(180deg);
+}
+
+details>.content {
+    padding: 0 1rem 1rem;
+}
+
+/* Animated reveal on scroll */
+.preload * {
+    transition: none !important;
+}
+
+/* avoid flash on load */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .5s ease, transform .5s ease;
+}
+
+[data-reveal].in-view {
+    opacity: 1;
+    transform: none;
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    [data-reveal] {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Utility spacing */
+.section {
+    padding: 2rem 0;
+}
+
+.section .section-title {
+    margin-bottom: .8rem;
+}
+
+/* Hero */
+.hero {
+    position: relative;
+    min-height: 56vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(120deg, #19332C, #265B4E);
+    color: #fff;
+    overflow: hidden;
+}
+
+.hero .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, .35));
+}
+
+.hero .content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero .meta {
+    color: #A0E6CF;
+}
+
+/* Canvas background in hero */
+#matrixCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: .28;
+}
